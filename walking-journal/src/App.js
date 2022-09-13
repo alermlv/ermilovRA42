@@ -28,9 +28,6 @@ function App() {
       distance: distanceValue,
     };
 
-    const target = list.find((item) => item.date === dateValue);
-    console.log(target)
-
     setList(prevListItems => [...prevListItems, newListItem]);
   };
 
