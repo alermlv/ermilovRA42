@@ -13,7 +13,7 @@ function Details({ info }) {
 
   return (
     <>
-      {userInfo.id && (
+      {userInfo && (
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={userInfo.avatar} />
           <Card.Body>
