@@ -1,4 +1,4 @@
-# Sticky Notes
+# Social Feed Router
 
 ## Установка
 
