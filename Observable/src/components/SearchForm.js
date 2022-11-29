@@ -25,9 +25,17 @@ function SearchForm() {
         />
         <Button variant="outline-secondary">Поиск</Button>
       </InputGroup>
-      {error ? <div>Error occured</div> : <ul>{items.map(
-        o => <li key={o.id}>{o.name}</li>
-      )}</ul>}
+      {loading && <div>Loading...</div>}
+      {error && <div>Error occured</div>}
+      {search.length === 0 ? (
+        <div>Type something to search...</div>
+      ) : (
+        <ul>
+          {items.map((o) => (
+            <li key={o.id}>{o.name}</li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
