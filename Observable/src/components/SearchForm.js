@@ -6,14 +6,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeSearchField } from "../actions/actionCreators";
 
 function SearchForm() {
-  const {items, loading, error, search} = useSelector(state => state.skills);
+  const { items, loading, error, search } = useSelector(
+    (state) => state.skills
+  );
   const dispatch = useDispatch();
-  
-  const handleSearch = event => {
-    const {value} = event.target;
-    dispatch(changeSearchField(value))
+  console.log(items);
+
+  const handleSearch = (event) => {
+    const { value } = event.target;
+    dispatch(changeSearchField(value));
   };
-  
+
+  const hasQuery = search.trim() !== "";
+
   return (
     <>
       <InputGroup className="mb-3" style={{ padding: "0 15px" }}>
@@ -25,10 +30,10 @@ function SearchForm() {
         />
         <Button variant="outline-secondary">Поиск</Button>
       </InputGroup>
-      {loading && <div>Loading...</div>}
-      {error && <div>Error occured</div>}
-      {search.length === 0 ? (
-        <div>Type something to search...</div>
+      {!hasQuery && <div>Type something to search...</div>}
+      {hasQuery && loading && <div>Loading...</div>}
+      {error ? (
+        <div>Error occured</div>
       ) : (
         <ul>
           {items.map((o) => (
